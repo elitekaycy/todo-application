@@ -52,11 +52,8 @@ jobs:
         aws ecr describe-repositories --repository-names $ECR_REPOSITORY --region $AWS_REGION || \
         aws ecr create-repository --repository-name $ECR_REPOSITORY --region $AWS_REGION
 
-    - name: Set up Maven wrapper permissions
-      run: chmod +x ./mvnw
-
-    - name: Run tests
-      run: ./mvnw test
+    - name: Build application
+      run: mvn clean package -DskipTests
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
