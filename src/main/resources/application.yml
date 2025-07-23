@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: todo-app
+  devtools:
+    restart:
+      enabled: false
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 3600
+
+aws:
+  region: ${AWS_REGION:eu-central-1}
+  dynamodb:
+    endpoint: ${AWS_DYNAMODB_ENDPOINT:}
+
+app:
+  dynamodb:
+    table-name: ${DYNAMODB_TABLE_NAME:TodoTable}
+
+
+logging:
+  level:
+    com.todoapp: DEBUG
+    software.amazon.awssdk: WARN
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

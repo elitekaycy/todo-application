@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <div class="container">
+            <header class="header">
+                <h1>Todo</h1>
+                <div class="stats">
+                    <span id="todo-stats">0 items</span>
+                </div>
+            </header>
+
+            <div class="input-section">
+                <form id="add-todo-form" class="add-form">
+                    <input type="text" id="todo-input" placeholder="Add a new task..." maxlength="200" required>
+                    <button type="submit" class="add-btn">Add</button>
+                </form>
+            </div>
+
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search tasks...">
+                    <button id="clear-search" class="clear-btn">×</button>
+                </div>
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <ul id="todo-list" class="todo-list"></ul>
+                
+                <div id="empty-state" class="empty-state hidden">
+                    <div class="empty-icon">✓</div>
+                    <p>All done!</p>
+                    <span>No tasks to show</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
