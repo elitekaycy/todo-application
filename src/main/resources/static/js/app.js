@@ -51,7 +51,7 @@ class SimpleTodoApp {
             });
 
             console.log(`Response status: ${response.status}`);
-            
+
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error(`HTTP error! status: ${response.status}, body: ${errorText}`);
@@ -144,11 +144,11 @@ class SimpleTodoApp {
                 <button class="todo-btn cancel-btn" onclick="app.cancelEdit('${id}')">Cancel</button>
             </div>
         `;
-        
+
         const input = todoItem.querySelector('.edit-input');
         input.focus();
         input.select();
-        
+
         // Save on Enter, Cancel on Escape
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.saveEdit(id);
@@ -207,7 +207,7 @@ class SimpleTodoApp {
 
         // Filter by search
         if (this.currentSearch) {
-            filtered = filtered.filter(todo => 
+            filtered = filtered.filter(todo =>
                 todo.title.toLowerCase().includes(this.currentSearch.toLowerCase())
             );
         }
@@ -261,7 +261,7 @@ class SimpleTodoApp {
         const createdAt = new Date(todo.createdAt).toLocaleDateString();
         const updatedAt = new Date(todo.updatedAt).toLocaleDateString();
         const timeInfo = createdAt === updatedAt ? `Created: ${createdAt}` : `Created: ${createdAt} • Updated: ${updatedAt}`;
-        
+
         return `
             <li class="todo-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
                 <div class="todo-checkbox ${todo.completed ? 'completed' : ''}">
@@ -283,7 +283,7 @@ class SimpleTodoApp {
         const total = this.todos.length;
         const completed = this.todos.filter(todo => todo.completed).length;
         const pending = total - completed;
-        
+
         let statsText = '';
         if (this.currentFilter === 'all') {
             if (total === 0) {
@@ -312,5 +312,4 @@ class SimpleTodoApp {
     }
 }
 
-// Initialize the app
 const app = new SimpleTodoApp();
